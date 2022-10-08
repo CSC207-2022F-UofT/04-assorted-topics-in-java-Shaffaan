@@ -44,15 +44,22 @@ class DrivableMap {
      * iterate through drivable_map.
      */
     public boolean hasFasterThan(int speed) {
-        for (String key: this.drivable_map.keySet()) {
-            // gets the animal and checks max speed
-            if (this.drivable_map.get(key).getMaxSpeed() >= speed) {
+        for(Drivable x : drivable_map.values()){
+            if (x.getMaxSpeed() >= speed) {
                 return true;
             }
-
         }
         return false;
     }
+
+//    public boolean hasFasterThan(int speed) {
+//        for (String key: drivable_map.keySet()) {
+//            if (drivable_map.get(key).getMaxSpeed() >= speed) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
 
 
