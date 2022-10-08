@@ -27,7 +27,13 @@ class DrivableMap {
      *       in drivable_map, then add the pair to drivable_map.
      *       Return true if the Drivable was added to drivable_map.
      */
-
+    public boolean addDrivable(String ID, Drivable y) {
+        if (!this.drivable_map.containsKey(ID)) {
+            this.drivable_map.put(ID, y);
+            return true;
+        }
+        return false;
+    }
 
 
 
@@ -37,6 +43,16 @@ class DrivableMap {
      * You may want to use drivable_map.keys() or drivable_map.values() to
      * iterate through drivable_map.
      */
+    public boolean hasFasterThan(int speed) {
+        for (String key: this.drivable_map.keySet()) {
+            // gets the animal and checks max speed
+            if (this.drivable_map.get(key).getMaxSpeed() >= speed) {
+                return true;
+            }
+
+        }
+        return false;
+    }
 
 
 
@@ -46,6 +62,19 @@ class DrivableMap {
      *       returns a List containing all of the Tradable items in
      *       drivable_map.
      */
+    public List<Tradable> getTradable() {
+        ArrayList<Tradable> items= new ArrayList<>();
+        for (String key: this.drivable_map.keySet()) {
+            if (this.drivable_map.get(key) instanceof Tradable) {
+                // .get(key) checks the animal then sees if it is instance of
+                //
+                // {1,horse} {2,unicorn}
+                items.add((Tradable) this.drivable_map.get(key));
+            }
+        }
+        return items;
+    }
+
 
 
 
